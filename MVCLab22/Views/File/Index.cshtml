@@ -3,13 +3,25 @@
     var files = ViewBag.Files as string[];
 }
 
+@* <div class="text-center">
+<h1 class="display-4">@ViewData["Title"] </h1>
+@foreach (var file in files!)
+{
+<p>@file</p>
+}
+
+<h2>Student ID: A01282003 </h2>
+<p>I want to be a Software Engineer when I graduate</p>
+</div> *@
+
+
 <div class="text-center">
-    <h1 class="display-4">@ViewData["Title"] </h1>
+    <h1 class="display-4">@ViewData["Title"]</h1>
     @foreach (var file in files!)
     {
-        <p>@file</p>
+        <p>
+            <a href="@Url.Action("OpenFile", "File", new { fileName = System.IO.Path.GetFileName(file) })"
+                target="_blank">@System.IO.Path.GetFileName(file)</a>
+        </p>
     }
-
-    @* <h2>Student ID: A01282003 </h2>
-    <p>I want to be a Software Engineer when I graduate</p> *@
 </div>

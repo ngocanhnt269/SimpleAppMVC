@@ -1,0 +1,15 @@
+@model System.Diagnostics.Process
+
+@{
+    ViewData["Title"] = "Details Page Process";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> @ViewData["Title"]</h1>
+    <p>Details ID: @Model.Id</p>
+    <p>Detail Name: @Model.ProcessName</p>
+    <p>Detail MachineName: @Model.MachineName</p>
+    <p>Detail MainWindowTitle: @Model.MainWindowTitle</p>
+    <p>Detail Responding: @Model.Responding</p>
+
+</div>

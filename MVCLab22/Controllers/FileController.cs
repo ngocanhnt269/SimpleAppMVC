@@ -28,7 +28,21 @@ public class FileController : Controller
     //     return View();
     // }
 
+    public IActionResult OpenFile(string fileName)
+    {
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "TextFiles", fileName);
 
+        if (System.IO.File.Exists(filePath))
+        {
+            var fileContent = System.IO.File.ReadAllText(filePath);
+
+            return Content(fileContent, "text/plain");
+        }
+        else
+        {
+            return NotFound();
+        }
+    }
 
 }
 
