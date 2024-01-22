@@ -23,10 +23,6 @@ public class FileController : Controller
         return View();
     }
 
-    // public IActionResult Content()
-    // {
-    //     return View();
-    // }
 
     public IActionResult OpenFile(string fileName)
     {
