@@ -21,15 +21,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "OpenFile",
-    pattern: "File/OpenFile/{fileName}",
-    defaults: new { controller = "File", action = "OpenFile" });
-
-
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// app.Urls.Add("http://localhost:5036");
 
 app.Run();

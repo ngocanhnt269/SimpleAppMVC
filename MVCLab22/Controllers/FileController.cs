@@ -18,21 +18,25 @@ public class FileController : Controller
     {
         var path = Path.Combine(_evn.ContentRootPath, "TextFiles");
 
-        ViewBag.Files = Directory.GetFiles(path);
-
+        var files = Directory.GetFiles(path);
+        for (int i = 0; i < files.Length; i++)
+        {
+            files[i] = Path.GetFileName(files[i]);
+        }
+        ViewBag.files = files;
         return View();
     }
 
 
-    public IActionResult OpenFile(string fileName)
+    public IActionResult Content(string id)
     {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "TextFiles", fileName);
+        var filePath = Path.Combine(_evn.ContentRootPath, "TextFiles", id);
 
         if (System.IO.File.Exists(filePath))
         {
             var fileContent = System.IO.File.ReadAllText(filePath);
-
-            return Content(fileContent, "text/plain");
+            ViewBag.fileContent = fileContent;
+            return View();
         }
         else
         {

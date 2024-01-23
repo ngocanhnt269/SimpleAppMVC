@@ -1,3 +1,4 @@
+
 @{
     ViewData["Title"] = "File Page";
     var files = ViewBag.Files as string[];
@@ -19,9 +20,7 @@
     <h1 class="display-4">@ViewData["Title"]</h1>
     @foreach (var file in files!)
     {
-        <p>
-            <a href="@Url.Action("OpenFile", "File", new { fileName = System.IO.Path.GetFileName(file) })"
-                target="_blank">@System.IO.Path.GetFileName(file)</a>
-        </p>
+        <p><a asp-controller="File" asp-action="Content" asp-route-id="@file">@file</a></p>
+
     }
 </div>
